@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3i5p3d7oujf8"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_44cp8"]
+[ext_resource type="Texture2D" uid="uid://qwrpaipvd70g" path="res://Assets/Menu/Background/Background_menu.png" id="1_cx104"]
+[ext_resource type="Texture2D" uid="uid://dqodfi2pdvhg1" path="res://Assets/Menu/Button_play/button_state_1.png" id="2_nqhni"]
+[ext_resource type="AudioStream" uid="uid://bc4quvp6wk1ds" path="res://Assets/music/mariomenu.mp3" id="4_cbkou"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_44cp8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_cx104")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 874.0
+offset_right = 1848.0
+offset_bottom = 1032.0
+icon = ExtResource("2_nqhni")
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cbkou")
+volume_db = 2.811
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

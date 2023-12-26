@@ -1,0 +1,84 @@
+[gd_scene load_steps=16 format=3 uid="uid://bspvh2pi6uq2b"]
+
+[ext_resource type="Script" path="res://Scripts/bandit.gd" id="1_0g821"]
+[ext_resource type="Texture2D" uid="uid://yfirsk13b8jj" path="res://Assets/Game/Enemy/Enemy1_dead/Enemy_walk_dead1.png" id="1_b51dw"]
+[ext_resource type="Texture2D" uid="uid://co7i7t7f8nrqb" path="res://Assets/Game/Enemy/Enemy1/Enemy_walk1.png" id="1_g3vsg"]
+[ext_resource type="Texture2D" uid="uid://d36l0sjgavns8" path="res://Assets/Game/Enemy/Enemy1/Enemy_walk2.png" id="2_7jr7k"]
+[ext_resource type="Texture2D" uid="uid://d0qgjdc1od4k2" path="res://Assets/Game/Enemy/Enemy1_dead/Enemy_walk_dead2.png" id="2_k6yra"]
+[ext_resource type="Texture2D" uid="uid://ua6wu1nbiric" path="res://Assets/Game/Enemy/Enemy1/Enemy_walk3.png" id="3_lg2xh"]
+[ext_resource type="Texture2D" uid="uid://bpb0bimulduo" path="res://Assets/Game/Enemy/Enemy1_dead/Enemy_walk_dead3.png" id="3_punjs"]
+[ext_resource type="Texture2D" uid="uid://cgeevp5oftm8b" path="res://Assets/Game/Enemy/Enemy1_dead/Enemy_walk_dead4.png" id="4_qcmj0"]
+[ext_resource type="Texture2D" uid="uid://cyk3q5ppeeh5g" path="res://Assets/Game/Enemy/Enemy1/Enemy_walk4.png" id="4_w6rqb"]
+[ext_resource type="Texture2D" uid="uid://eeaa0hgxb14v" path="res://Assets/Game/Enemy/Enemy1/Enemy_walk5.png" id="5_hpx2e"]
+[ext_resource type="Texture2D" uid="uid://cys45g7npump3" path="res://Assets/Game/Enemy/Enemy1_dead/Enemy_walk_dead5.png" id="5_kuyfu"]
+[ext_resource type="Texture2D" uid="uid://bdrs255fjpdxr" path="res://Assets/Game/Enemy/Enemy1_dead/Enemy_walk_dead6.png" id="6_06cdy"]
+[ext_resource type="AudioStream" uid="uid://boislsxa3k8d8" path="res://Assets/music/marioenemydeath.mp3" id="13_qpos7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8qrdw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b51dw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_k6yra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_punjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qcmj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kuyfu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_06cdy")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g3vsg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7jr7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lg2xh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w6rqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hpx2e")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mh3b"]
+size = Vector2(64, 128)
+
+[node name="Bandit" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_0g821")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(0.64, 0.677249)
+sprite_frames = SubResource("SpriteFrames_8qrdw")
+animation = &"dead"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3mh3b")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 64)
+
+[node name="DeathMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_qpos7")

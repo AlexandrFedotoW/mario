@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://6ch3vwjr2siq"]
+
+[ext_resource type="Script" path="res://Bandit2.gd" id="1_gpeg6"]
+[ext_resource type="Texture2D" uid="uid://cg0dya3j6ivjq" path="res://Assets/Game/Finish_block/Finish_block.png" id="2_vik5o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_blvjp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vik5o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mh3b"]
+size = Vector2(64, 128)
+
+[node name="End" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_gpeg6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(0.64, 0.677249)
+sprite_frames = SubResource("SpriteFrames_blvjp")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3mh3b")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 64)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

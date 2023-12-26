@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5508yig3214"]
+
+[ext_resource type="Texture2D" uid="uid://c1f7yp6wavr2b" path="res://Assets/Game/Platform/Platform_base.png" id="1_sb574"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t53g7"]
+size = Vector2(64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2rrh4"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"destruction",
+"speed": 5.0
+}]
+
+[node name="Block" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.27374e-13, 4.76837e-07)
+scale = Vector2(0.130612, 0.165375)
+texture = ExtResource("1_sb574")
+region_enabled = true
+region_rect = Rect2(486, 9.25, 490, 387.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t53g7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2rrh4")
+animation = &"destruction"

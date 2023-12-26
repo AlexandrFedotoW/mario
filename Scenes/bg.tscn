@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnixxfxyfmrq5"]
+
+[ext_resource type="Texture2D" uid="uid://capcimby6qtt4" path="res://Assets/Game/Background/Background_game.png" id="1_kecfe"]
+
+[node name="BG" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -576.0
+offset_top = -328.0
+offset_right = 576.0
+offset_bottom = 320.0
+texture = ExtResource("1_kecfe")
+expand_mode = 3

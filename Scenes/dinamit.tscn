@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://uswsqk5nelb7"]
+
+[ext_resource type="Script" path="res://Scripts/dinamit.gd" id="1_3ih0o"]
+[ext_resource type="Texture2D" uid="uid://tpjib1iyjttg" path="res://Assets/Game/Enemy/Enemy_state.png" id="1_ess6j"]
+[ext_resource type="Texture2D" uid="uid://d176lclpwyjln" path="res://Assets/Game/Enemy/Enemy2_dead/Enemy_state_dead2.png" id="1_r6gyo"]
+[ext_resource type="Texture2D" uid="uid://7gm8umndn3ai" path="res://Assets/Game/Enemy/Enemy2_dead/Enemy_state_dead3.png" id="2_dwkke"]
+[ext_resource type="Texture2D" uid="uid://d26phmuqfnphy" path="res://Assets/Game/Enemy/Enemy2_dead/Enemy_state_dead1.png" id="3_64hf6"]
+[ext_resource type="AudioStream" uid="uid://boislsxa3k8d8" path="res://Assets/music/marioenemydeath.mp3" id="6_nmjsp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uqonv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_r6gyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dwkke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_64hf6")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ess6j")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ov661"]
+size = Vector2(72, 128)
+
+[node name="Dinamit" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_3ih0o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.22034, 1)
+sprite_frames = SubResource("SpriteFrames_uqonv")
+animation = &"dead"
+frame_progress = 0.484918
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ov661")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 64)
+
+[node name="DeathMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nmjsp")
